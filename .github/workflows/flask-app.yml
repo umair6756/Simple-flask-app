@@ -71,6 +71,10 @@ jobs:
         username: ${{ secrets.AZURE_USER }}
         key: ${{ secrets.AZURE_SSH_KEY }}
         script: |
+
+          echo "Restarting docker"
+          sudo systemctl restart docker
+          
           echo " Pulling latest Docker image"
           docker pull ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
 
