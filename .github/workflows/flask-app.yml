@@ -32,13 +32,18 @@ jobs:
         exit-code: '0'
         ignore-unfixed: true
 
-    - name:  SonarQube Code Analysis
+    - name: SonarQube Code Analysis
       uses: sonarsource/sonarqube-scan-action@master
       with:
-        projectBaseDir: .
+          projectBaseDir: .
+          args: >
+             -Dsonar.projectKey=Simple-flask-app
+             -Dsonar.projectName=Simple-flask-app
+             -Dsonar.sources=.
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: http://localhost:9000
+
 
     - name:  OWASP Dependency Check
       uses: dependency-check/Dependency-Check_Action@main
