@@ -76,10 +76,10 @@ jobs:
           sudo systemctl restart docker
           
           echo " Pulling latest Docker image"
-          docker pull ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
 
           echo " Running new container"
-          docker run -d --name flask-app -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
+          sudo docker run -d --name flask-app -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
 
           echo " Restarting Nginx"
           sudo systemctl restart nginx
